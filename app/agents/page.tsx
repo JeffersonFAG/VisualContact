@@ -5,7 +5,6 @@ import { useAppContext } from "@/context/AppContext";
 import { Agent } from "@/types";
 import AgentFilters from "@/components/AgentFilters";
 import AgentList from "@/components/AgentList";
-import ButtonPath from "@/components/BackButton";
 
 const AgentsPage = () => {
   const { agentStatuses } = useAppContext();
