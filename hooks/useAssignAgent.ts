@@ -14,24 +14,28 @@ export function useAssignAgent() {
         body: JSON.stringify({
           customerId,
           agentId,
-          customerStatus: "Ocupado",
-          agentStatus: "Ocupado",
+          customerStatus: "En llamada",
+          agentStatus: "Siendo atendido",
         }),
       });
 
       // Actualizar el estado en el contexto global
-      updateCustomerStatus(customerId, "Ocupado");
-      updateAgentStatus(agentId, "Ocupado");
+      updateCustomerStatus(customerId, "Siendo atendido");
+      updateAgentStatus(agentId, "En llamada");
 
       // Emitir un evento WebSocket para actualizar en otros clientes
       sendUpdate({
         type: "UPDATE_CUSTOMER",
-        customer: { id: customerId, assignedAgent: agentId, status: "Ocupado" },
+        customer: {
+          id: customerId,
+          assignedAgent: agentId,
+          status: "Siendo atendido",
+        },
       });
 
       sendUpdate({
         type: "UPDATE_AGENT",
-        agent: { id: agentId, status: "Ocupado" },
+        agent: { id: agentId, status: "En llamada" },
       });
     } catch (error) {
       console.error("Error al actualizar estado:", error);

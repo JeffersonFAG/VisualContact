@@ -1,18 +1,22 @@
 import { useAppContext } from "@/context/AppContext";
-import { useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 
 export function ActiveChat() {
   const { customers, agents, agentStatuses, customerStatuses } =
     useAppContext();
-  // const searchParams = useSearchParams();
-  // const id = searchParams.get("id");
+  const searchParams = useSearchParams();
 
-  //Verificar como obtener los params de laURL
-  const customer = customers.find((c) => c.id === 7);
+  const params = useParams<{ id: string }>();
+  const agentIdParam = searchParams.get("agentId") ?? null;
+  const idClient = Number(params.id);
+  const agentId = Number(agentIdParam);
+
+  const customer = customers.find((c) => c.id === idClient);
+
   if (!customer)
     return <p className="text-center text-gray-500">Cliente no encontrado</p>;
 
-  const agent = agents.find((a) => a.id === 3);
+  const agent = agents.find((a) => a.id === agentId);
   const agentStatus =
     agentStatuses.find((s) => s.id === agent?.statusId)?.name || "Desconocido";
   const customerStatus =

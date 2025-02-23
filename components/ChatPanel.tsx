@@ -1,21 +1,23 @@
 import { useState, useEffect } from "react";
 import { useAppContext } from "@/context/AppContext";
+import { useParams } from "next/navigation";
 
 export function ChatPanel() {
-  const { customers } = useAppContext();
-  // const router = useRouter();
-  // const { id } = router.query;
-  const customer = customers.find((c) => c.id === 7);
-
   const [messages, setMessages] = useState<{ sender: string; text: string }[]>(
     []
   );
   const [message, setMessage] = useState("");
+  const { customers } = useAppContext();
+  const params = useParams<{ id: string }>();
+
+  const idClient = Number(params.id);
+  const customer = customers.find((c) => c.id === idClient);
 
   useEffect(() => {
     const socket = new WebSocket("ws://localhost:4000/chat");
 
     socket.onmessage = (event) => {
+      debugger;
       const newMessage = JSON.parse(event.data);
       setMessages((prev) => [...prev, newMessage]);
     };

@@ -10,7 +10,7 @@ export function StatusBadge({ statusId }: { statusId: number }) {
   const statusLabels = [
     "",
     "Disponible",
-    "Ocupado",
+    "En llamada",
     "En Pausa",
     "Desconectado",
   ];
