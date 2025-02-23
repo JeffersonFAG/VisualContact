@@ -3,6 +3,7 @@ export interface Agent {
   name: string;
   surname: string;
   statusId: number;
+  statusName: string;
   waitTime: number;
 }
 

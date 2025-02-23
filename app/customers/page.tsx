@@ -1,37 +1,12 @@
-// if (type === "UPDATE_CUSTOMERS") {
-//   setCustomers(payload);
-// }
-
 "use client";
-import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Customer } from "@/types";
 import CustomerFilters from "@/components/CustomerFilters";
 import CustomerList from "@/components/CustomerList";
-import ButtonPath from "@/components/BackButton";
+import { useCustomerWebSocket } from "@/hooks/useCustomerWebsocket";
 
 const CustomersPage = () => {
   const searchParams = useSearchParams();
-  const [customers, setCustomers] = useState<Customer[]>([]);
-  const [gradientPosition, setGradientPosition] = useState(0);
-
-  useEffect(() => {
-    const socket = new WebSocket("ws://localhost:4000");
-
-    socket.onmessage = (event) => {
-      const { customers } = JSON.parse(event.data);
-      setCustomers(customers);
-    };
-
-    return () => socket.close();
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setGradientPosition((prev) => (prev + 1) % 100);
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
+  const { customers } = useCustomerWebSocket();
 
   const maxWaitTime = searchParams.get("maxWaitTime");
   const filteredCustomers = maxWaitTime

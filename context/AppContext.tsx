@@ -56,7 +56,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     setCustomers((prevCustomers) =>
       prevCustomers.map((customer) =>
         customer.id === customerId
-          ? { ...customer, status: newStatus }
+          ? { ...customer, statusName: newStatus }
           : customer
       )
     );
@@ -66,7 +66,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const updateAgentStatus = (agentId: number, newStatus: string) => {
     setAgents((prevAgents) =>
       prevAgents.map((agent) =>
-        agent.id === agentId ? { ...agent, status: newStatus } : agent
+        agent.id === agentId ? { ...agent, statusName: newStatus } : agent
       )
     );
   };

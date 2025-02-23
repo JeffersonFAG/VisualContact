@@ -14,7 +14,7 @@ export function ClientCard({ customer }: { customer: Customer }) {
               : "bg-red-100 text-red-800"
           }`}
         >
-          {customer.statusName} - Espera: {customer.waitTime} min
+          {customer.statusName} - {customer.waitTime} min
         </span>
       </div>
       <div className="border-t px-4 py-3 bg-gray-50 flex gap-3 justify-center">

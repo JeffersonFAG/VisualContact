@@ -1,25 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useAppContext } from "@/context/AppContext";
-import { Agent } from "@/types";
 import AgentFilters from "@/components/AgentFilters";
 import AgentList from "@/components/AgentList";
+import { useCustomerWebSocket } from "@/hooks/useCustomerWebsocket";
 
 const AgentsPage = () => {
   const { agentStatuses } = useAppContext();
+  const { agents } = useCustomerWebSocket();
   const searchParams = useSearchParams();
-
-  const [agents, setAgents] = useState<Agent[]>([]);
-
-  useEffect(() => {
-    const socket = new WebSocket("ws://localhost:4000");
-    socket.onmessage = (event) => {
-      const { type, agents } = JSON.parse(event.data);
-      if (type === "INIT") setAgents(agents);
-    };
-    return () => socket.close();
-  }, []);
 
   const statusId = searchParams.get("statusId");
   const filteredAgents = statusId

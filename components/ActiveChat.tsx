@@ -22,7 +22,7 @@ export function ActiveChat() {
   const customerStatus =
     customerStatuses.find((s) => s.id === customer.statusId)?.name ||
     "Desconocido";
-
+  debugger;
   return (
     <div className="bg-white shadow-md rounded-lg p-6">
       <h3 className="text-xl font-semibold mb-4">Chat Activo</h3>

@@ -8,7 +8,7 @@ export function useCustomerWebSocket() {
 
   useEffect(() => {
     const socket = new WebSocket("ws://localhost:4000");
-    socketRef.current = socket; // Guardar referencia
+    socketRef.current = socket;
 
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
@@ -49,14 +49,5 @@ export function useCustomerWebSocket() {
     return () => socket.close();
   }, []);
 
-  const sendUpdate = (message: object) => {
-    if (!socketRef.current || socketRef.current.readyState !== WebSocket.OPEN) {
-      console.error("WebSocket no está conectado.");
-      return;
-    }
-
-    socketRef.current.send(JSON.stringify(message));
-  };
-
-  return { customers, agents, sendUpdate };
+  return { customers, agents };
 }

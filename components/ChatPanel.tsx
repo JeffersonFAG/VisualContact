@@ -7,7 +7,7 @@ export function ChatPanel() {
     []
   );
   const [message, setMessage] = useState("");
-  const { customers } = useAppContext();
+  const { customers, agents } = useAppContext();
   const params = useParams<{ id: string }>();
 
   const idClient = Number(params.id);
@@ -17,7 +17,6 @@ export function ChatPanel() {
     const socket = new WebSocket("ws://localhost:4000/chat");
 
     socket.onmessage = (event) => {
-      debugger;
       const newMessage = JSON.parse(event.data);
       setMessages((prev) => [...prev, newMessage]);
     };
