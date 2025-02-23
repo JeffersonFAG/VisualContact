@@ -16,11 +16,7 @@ const AgentsPage = () => {
     const socket = new WebSocket("ws://localhost:4000");
     socket.onmessage = (event) => {
       const { type, agents } = JSON.parse(event.data);
-
-      setAgents(agents);
-      // if (type === "UPDATE_AGENTS") {
-      //   setAgents(agents);
-      // }
+      if (type === "INIT") setAgents(agents);
     };
     return () => socket.close();
   }, []);
