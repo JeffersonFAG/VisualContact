@@ -1,25 +1,33 @@
 import { useAssignAgent } from "@/hooks/useAssignAgent";
 import { useCustomerWebSocket } from "@/hooks/useCustomerWebsocket";
+import { AGENTS_STATUS } from "@/utils/constants";
 import { useState } from "react";
 
 export function CustomerListModal({
   onSelect,
   agentId,
+  statusId,
 }: {
   onSelect: (customerId: number) => void;
   agentId: number;
+  statusId: number;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const { customers } = useCustomerWebSocket();
   const { assignCustomerToAgent } = useAssignAgent();
-
+  console.log(statusId === AGENTS_STATUS.CALLING);
   return (
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+        className={`px-4 py-2 rounded transition ${
+          statusId === AGENTS_STATUS.CALLING
+            ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+            : "bg-blue-500 text-white hover:bg-blue-600"
+        }`}
+        disabled={statusId === AGENTS_STATUS.CALLING}
       >
-        Asignar
+        Asignar cliente
       </button>
 
       {isOpen && (

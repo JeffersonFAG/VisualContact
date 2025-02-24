@@ -21,3 +21,19 @@ export const CUSTOMER_STATUS = {
   BEING_ATTENDED: 2,
   ATTENDED: 3,
 };
+
+export const statusColors = [
+  "",
+  "bg-green-200 text-black",
+  "bg-red-200 text-black",
+  "bg-yellow-100 text-black",
+  "bg-gray-300 text-black",
+];
+
+export const statusLabels = [
+  "",
+  "Disponible",
+  "En llamada",
+  "En Pausa",
+  "Desconectado",
+];

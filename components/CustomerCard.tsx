@@ -17,14 +17,14 @@ export function ClientCard({ customer }: { customer: Customer }) {
           {customer.statusName} - {customer.waitTime} min
         </span>
       </div>
-      <div className="border-t px-4 py-3 bg-gray-50 flex gap-3 justify-center">
+      <div className="border-t px-4 py-3 bg-gray-50 flex gap-3 justify-start">
         <button className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition">
           Eliminar
         </button>
 
-        <button className="px-4 py-2 bg-green-500 text-white rounded-md shadow-md hover:bg-green-600 transition">
+        {/* <button className="px-4 py-2 bg-green-500 text-white rounded-md shadow-md hover:bg-green-600 transition">
           Llamar
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -1,25 +1,17 @@
-export function StatusBadge({ statusId }: { statusId: number }) {
-  const statusColors = [
-    "",
-    "bg-green-200 text-black",
-    "bg-red-200 text-black",
-    "bg-yellow-100 text-black",
-    "bg-gray-300 text-black",
-  ];
+import { AGENTS_STATUS, statusColors, statusLabels } from "@/utils/constants";
 
-  const statusLabels = [
-    "",
-    "Disponible",
-    "En llamada",
-    "En Pausa",
-    "Desconectado",
-  ];
-
+export function StatusBadge({
+  statusId,
+  waitTime,
+}: {
+  statusId: number;
+  waitTime: number;
+}) {
   return (
     <span
       className={`px-3 py-1 rounded-full text-xs font-semibold ${statusColors[statusId]}`}
     >
-      {statusLabels[statusId]}
+      {statusLabels[statusId]} - {waitTime} Min
     </span>
   );
 }

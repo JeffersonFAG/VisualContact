@@ -15,6 +15,7 @@ export default function Navbar() {
           <Link
             href="/"
             className="text-2xl font-extrabold text-green-400 drop-shadow-md"
+            onClick={() => setIsOpen(false)}
           >
             Contact Center AI
           </Link>

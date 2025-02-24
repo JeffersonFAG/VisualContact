@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import CustomerFilters from "@/components/CustomerFilters";
 import CustomerList from "@/components/CustomerList";
 import { useCustomerWebSocket } from "@/hooks/useCustomerWebsocket";
+import Loading from "@/components/Loading";
 
 const CustomersPage = () => {
   const searchParams = useSearchParams();
@@ -45,7 +46,11 @@ const CustomersPage = () => {
           {/* Filtros y lista con un layout más armónico */}
           <div className="w-full flex flex-col items-center space-y-6">
             <CustomerFilters />
-            <CustomerList customers={filteredCustomers} />
+            {filteredCustomers?.length === 0 ? (
+              <Loading />
+            ) : (
+              <CustomerList customers={filteredCustomers} />
+            )}
           </div>
         </div>
       </div>
