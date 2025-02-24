@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Este proyecto es una aplicación frontend desarrollada en **Next.js** para un **contact center**. Permite visualizar información en tiempo real sobre los agentes y los clientes en espera, con actualizaciones mediante **WebSockets** y una API RESTful proporcionada por un backend en **.NET**.
+Este proyecto es una aplicación frontend desarrollada en **Next.js** para un **contact center**. Permite visualizar información en tiempo real sobre los agentes y los clientes en espera, con actualizaciones mediante **WebSockets** y una API RESTful.
 
 ## Tecnologías utilizadas
 
