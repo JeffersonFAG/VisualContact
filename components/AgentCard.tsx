@@ -18,7 +18,7 @@ export function AgentCard({ agent }: { agent: Agent }) {
 
       <div className="border-t pt-4 flex gap-3 justify-center">
         <button className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition">
-          Cambiar Estado
+          Estado
         </button>
 
         <CustomerListModal
