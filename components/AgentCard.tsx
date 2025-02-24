@@ -18,11 +18,9 @@ export function AgentCard({ agent }: { agent: Agent }) {
 
       <div className="border-t pt-4 flex gap-3 justify-center">
         <button className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition">
-          Cambiar Estado
+          Estado
         </button>
-        {/* <button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">
-          Llamar
-        </button> */}
+
         <CustomerListModal
           onSelect={handleAssign}
           agentId={agent.id}
