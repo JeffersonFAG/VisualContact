@@ -42,6 +42,21 @@ Este proyecto es una aplicación frontend desarrollada en **Next.js** para un **
 
 ---
 
+Cada componente se encarga de una funcionalidad específica, promoviendo la reutilización y mantenibilidad del código.
+
+---
+
+### 🔄 Manejo del Estado Global con `useContext`
+
+El estado global se maneja con **React Context API**. La lógica está centralizada en `/context/AppContext.js` para evitar llamadas repetitivas a la API y mejorar el rendimiento.
+
+**Flujo de estado:**
+1. **Carga inicial:** Se realiza una única petición HTTP a la API para obtener agentes y clientes en espera.
+2. **Almacenamiento:** La información se guarda en el `useContext`, permitiendo que cualquier componente acceda a los datos sin repetir llamadas a la API.
+3. **Escucha de eventos:** Una vez que los datos están cargados, se establece la conexión WebSocket para recibir actualizaciones en tiempo real.
+4. **Actualización dinámica:** Cuando el WebSocket envía un evento de cambio de estado, `useContext` se actualiza automáticamente, provocando el re-render de los componentes afectados.
+
+
 ##  Instalación y Configuración
 
 ### 🔹 Requisitos
