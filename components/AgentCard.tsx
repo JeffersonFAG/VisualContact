@@ -10,7 +10,7 @@ export function AgentCard({ agent }: { agent: Agent }) {
   const handleAssign = (customerId: number) => {
     router.push(`/customers/${customerId}?agentId=${agent.id}`); // Redirige a la página del cliente
   };
-  console.log(agent);
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden p-6 flex flex-col space-y-3">
       <h3 className="text-xl font-semibold">{agent.name}</h3>

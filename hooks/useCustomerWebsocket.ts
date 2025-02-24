@@ -11,12 +11,10 @@ export function useCustomerWebSocket() {
   const connectWebSocket = () => {
     if (socketRef.current) return; // Evita conexiones múltiples
 
-    console.log("Connecting WebSocket...");
     const socket = new WebSocket("ws://localhost:4000");
     socketRef.current = socket;
 
     socket.onopen = () => {
-      console.log("WebSocket connected");
       reconnectRef.current = 0; // Reinicia contador de reconexión
     };
 
@@ -58,7 +56,6 @@ export function useCustomerWebSocket() {
     };
 
     socket.onerror = (error) => {
-      console.log(" Error on WebSocket:", error);
       socket.close(); // Cierra el socket en caso de error
     };
   };
@@ -70,7 +67,6 @@ export function useCustomerWebSocket() {
     }
 
     const delay = Math.min(1000 * 2 ** reconnectRef.current, 30000); // Exponential backoff
-    console.log(`Reconection ${delay / 1000}s...`);
 
     reconnectTimer.current = setTimeout(() => {
       reconnectRef.current += 1;
@@ -82,7 +78,6 @@ export function useCustomerWebSocket() {
     connectWebSocket();
 
     return () => {
-      console.log("Closing WebSocket...");
       if (socketRef.current) socketRef.current.close();
       if (reconnectTimer.current) clearTimeout(reconnectTimer.current);
     };

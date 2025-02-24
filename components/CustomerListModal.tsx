@@ -15,7 +15,7 @@ export function CustomerListModal({
   const [isOpen, setIsOpen] = useState(false);
   const { customers } = useCustomerWebSocket();
   const { assignCustomerToAgent } = useAssignAgent();
-  console.log(statusId === AGENTS_STATUS.CALLING);
+
   return (
     <>
       <button
