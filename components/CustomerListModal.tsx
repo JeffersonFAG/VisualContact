@@ -27,7 +27,7 @@ export function CustomerListModal({
         }`}
         disabled={statusId === AGENTS_STATUS.CALLING}
       >
-        Asignar cliente
+        Asignar
       </button>
 
       {isOpen && (

@@ -4,6 +4,8 @@ import CustomerFilters from "@/components/CustomerFilters";
 import CustomerList from "@/components/CustomerList";
 import { useCustomerWebSocket } from "@/hooks/useCustomerWebsocket";
 import Loading from "@/components/Loading";
+import { Title } from "@/components/Title";
+import { DescriptionText } from "@/components/DescriptionText";
 
 const CustomersPage = () => {
   const searchParams = useSearchParams();
@@ -30,22 +32,19 @@ const CustomersPage = () => {
         <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-gradient-to-br from-blue-500 to-green-400 rounded-full opacity-30 blur-3xl"></div>
 
         {/* Contenedor principal con efecto vidrio */}
-        <div className="relative w-full bg-white/10 backdrop-blur-xl shadow-lg rounded-3xl p-8 md:p-12 border border-white/20">
+        <div className="">
           {/* Título con efectos llamativos */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-green-400 mb-4 drop-shadow-md">
-            Clientes en Espera
-          </h1>
-
-          {/* Descripción optimizada */}
-          <p className="text-base sm:text-lg md:text-xl text-white mb-6">
-            Optimiza la gestión de tus clientes con nuestra tecnología avanzada.
+          <Title title="Clientes en Espera" />
+          <DescriptionText
+            description="Optimiza la gestión de tus clientes con nuestra tecnología avanzada.
             Filtra clientes y accede a la información en tiempo real con total
-            precisión.
-          </p>
-
+            precisión."
+          />
           {/* Filtros y lista con un layout más armónico */}
-          <div className="w-full flex flex-col items-center space-y-6">
-            <CustomerFilters />
+          <div className="w-full flex flex-col items-start space-y-6">
+            <div className="relative flex justify-start items-start z-10">
+              <CustomerFilters />
+            </div>
             {filteredCustomers?.length === 0 ? (
               <Loading />
             ) : (
